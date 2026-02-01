@@ -21,7 +21,7 @@ function addPage(page, book) {
 	var element = $('<div />', {});
 
 	if (book.turn('addPage', element, page)) {
-		if (page<28) {
+		if (page<48) {
 			element.html('<div class="gradient"></div><div class="loader"></div>');
 			loadPage(page);
 		}
@@ -30,7 +30,7 @@ function addPage(page, book) {
 
 function updateTabs() {
 	
-	var tabs = {1: '', 2:'', 3:'', 4:'', 13:''},
+	var tabs = {1: '', 2:'', 3:'', 4:'', 48:''},
 		left = [],
 		right = [],
 		book = $('.sample-docs'),
