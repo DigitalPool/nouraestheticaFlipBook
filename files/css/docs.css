@@ -71,6 +71,15 @@ body{
 	background-position:-1413px 0;
 }
 
+/* Map back cover pages to the correct slice of covers.jpg for 44-page books */
+.sample-docs .p43{
+	background-position:-942px 0;
+}
+
+.sample-docs .p44{
+	background-position:-1413px 0;
+}
+
 .sample-docs .even .gradient{
 	position:absolute;
 	top:0;
