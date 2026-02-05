@@ -7,9 +7,10 @@ body{
 }
 
 #canvas{
-	width: 960px;
-	height: 600px;
+	width: 1440px;
+	height: 900px;
 	margin: 100px auto;
+	position: relative;
 }
 
 #book-zoom{
@@ -30,13 +31,13 @@ body{
 
 .sample-docs{
 	margin-top:20px;
-	width:942px;
-	height:600px;
+	width:1440px;
+	height:900px;
 }
 
 .sample-docs .page{
-	width:471px;
-	height:600px;
+	width:1440px;
+	height:900px;
 	background:white;
 
 	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
@@ -47,11 +48,11 @@ body{
 }
 
 .sample-docs .hard{
-	background-image:url(../pics/covers.jpg);
+	background-image:url(../pics/covers.png);
 }
 
 .sample-docs .p2{
-	background-position:-471px 0;
+	background-position:-720px 0;
 }
 
 .sample-docs .p28{
@@ -64,20 +65,20 @@ body{
 }
 
 .sample-docs .p29{
-	background-position:-942px 0;
+	background-position:-1440px 0;
 }
 
 .sample-docs .p30{
-	background-position:-1413px 0;
+	background-position:-2160px 0;
 }
 
 /* Map back cover pages to the correct slice of covers.jpg for 44-page books */
 .sample-docs .p43{
-	background-position:-942px 0;
+	background-position:-1440px 0;
 }
 
 .sample-docs .p44{
-	background-position:-1413px 0;
+	background-position:-2160px 0;
 }
 
 .sample-docs .even .gradient{
@@ -115,8 +116,8 @@ body{
 	width:22px;
 	height:22px;
 	position:absolute;
-	top:280px;
-	left:219px;
+	top:560px;
+	left:438px;
 }
 
 .sample-docs .shadow{
@@ -133,7 +134,7 @@ body{
 }
 
 .sample-docs .tabs{
-	width:942px;
+	width:1884px;
 	height:22px;
 	top:-22px;
 	position:relative;
@@ -141,7 +142,7 @@ body{
 }
 
 .sample-docs .tabs > div{
-	width:461px;
+	width:922px;
 	height:22px;
 	float:left;
 }
@@ -181,4 +182,59 @@ body{
 	cursor:pointer;
 	-webkit-border-image: url(../pics/tab-hover.png) 5 20 5 20 repeat stretch;
 
+}
+
+/* On-canvas navigation arrows for users who prefer clicks */
+.nav-arrow{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	width:58px;
+	height:94px;
+	/* background:linear-gradient(145deg, #faf8f3 0%, #e7e1d7 45%, #f5f1ea 100%); */
+	background: #ffffff;
+	border:1px solid #d9cfbe;
+	border-radius:14px;
+	box-shadow:0 8px 28px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.9);
+	color:#5a4a38;
+	font:bold 32px/94px "Helvetica Neue", Arial, sans-serif;
+	text-align:center;
+	cursor:pointer;
+	z-index:5;
+	transition:background 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+	overflow:hidden;
+}
+
+.nav-arrow:hover{
+	background:linear-gradient(145deg, #fffdf9 0%, #f1eadf 50%, #fffdf9 100%);
+	box-shadow:0 10px 32px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.95);
+	transform:translateY(-50%) scale(1.03);
+}
+
+.nav-arrow.disabled{
+	opacity:0.35;
+	cursor:default;
+	box-shadow:none;
+	pointer-events:none;
+}
+
+.nav-arrow::after{
+	content:"";
+	position:absolute;
+	left:8px;
+	right:8px;
+	top:10px;
+	height:18px;
+	background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0));
+	border-radius:10px;
+	opacity:0.9;
+	pointer-events:none;
+}
+
+.nav-left{
+	left:-60px;
+}
+
+.nav-right{
+	right:-60px;
 }

@@ -25,6 +25,9 @@
 		</div>
 	</div>
 
+	<div class="nav-arrow nav-left" role="button" aria-label="Previous page">◀</div>
+	<div class="nav-arrow nav-right" role="button" aria-label="Next page">▶</div>
+
 
 	<div id="slider-bar" class="turnjs-slider">
 		<div id="slider"></div>
@@ -37,6 +40,14 @@
 function loadApp() {
 
 	var flipbook = $('.sample-docs');
+
+	var updateArrows = function(page){
+		var total = flipbook.turn('pages'),
+			current = page || flipbook.turn('page');
+
+		$('.nav-left').toggleClass('disabled', current<=1);
+		$('.nav-right').toggleClass('disabled', current>=total);
+	};
 
 	// Check if the CSS was already loaded
 	
@@ -132,6 +143,14 @@ function loadApp() {
 
 	// Arrows
 
+	$('.nav-left').on('click', function(){
+		if (!$(this).hasClass('disabled')) flipbook.turn('previous');
+	});
+
+	$('.nav-right').on('click', function(){
+		if (!$(this).hasClass('disabled')) flipbook.turn('next');
+	});
+
 	$(document).keydown(function(e){
 
 		var previous = 43, next = 44;
@@ -211,6 +230,7 @@ function loadApp() {
 
 			book.turn('center');
 			updateTabs();
+			updateArrows(page);
 
 		},
 
@@ -241,7 +261,9 @@ function loadApp() {
 	}
 	}). turn('page', 1);
 
+	updateArrows(1);
 
+	
 	$('#slider').slider('option', 'max', numberOfViews(flipbook));
 
 	flipbook.addClass('animated');
